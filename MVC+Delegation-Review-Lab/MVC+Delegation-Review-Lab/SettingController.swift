@@ -14,8 +14,7 @@ class SettingController: UIViewController {
     @IBOutlet weak var stepperControl: UIStepper!
     @IBOutlet weak var fontSize: UILabel!
     
-    
-    var font: Float = 20 {
+    var font: Float = 20 { // how can i get it to remain the same font and not change back to 20
         didSet {
             fontSize.text = "Font Size: \(String(format: "%0.f", font))"
         }
@@ -32,7 +31,9 @@ class SettingController: UIViewController {
     func configureSlider() {
            sliderControl.minimumValue = 5
            sliderControl.maximumValue = 35
-           sliderControl.value = 20
+        
+        //default start value
+           sliderControl.value = font
        }
     
     func configuresStepper() {
@@ -41,7 +42,7 @@ class SettingController: UIViewController {
         stepperControl.stepValue = 1
         
         //default start value
-        stepperControl.value = 20
+        stepperControl.value = Double(font)
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
@@ -56,7 +57,4 @@ class SettingController: UIViewController {
         sliderControl.value = font
         
     }
-    
-    
-
 }

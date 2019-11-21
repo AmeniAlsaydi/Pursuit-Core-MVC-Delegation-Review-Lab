@@ -18,16 +18,11 @@ class ViewController: UIViewController {
         }
     }
     
-    var font: Float! {
+    var font: CGFloat = 20.0 {
         didSet {
-            print(font)
-            // change the font of the cells
-            // cell.textLabel?.font
-            //cell.detailTextLabel?.text = movie.year.description
-            
+            tableView.reloadData() // THIS IS WHAT I WAS MISSING.. RELOAD DATA ONCE FONT HAS BEEN CHANGED!! 
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,18 +35,24 @@ class ViewController: UIViewController {
         movies = Movie.allMovies
     }
     
+    // Unwind Segue:
+    
     @IBAction func changeFont(segue: UIStoryboardSegue) {
         // get the font(float) from the other view controller
         
         guard let settingsVC = segue.source as? SettingController else {
             fatalError("Failed to get access to SettingController")
         }
-         font = settingsVC.font
+        font = CGFloat(settingsVC.font)
     }
 
 }
 
+//
+
 extension ViewController: UITableViewDataSource {
+    
+    // Table View required methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
     }
@@ -60,9 +61,12 @@ extension ViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         let movie = movies[indexPath.row]
         
+        // assign text
         cell.textLabel?.text = movie.name
         cell.detailTextLabel?.text = movie.year.description
-        
+        // assign font
+        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: font)
+        cell.detailTextLabel?.font = UIFont(name: "HelveticaNeue-Light", size: font)
         
         return cell
     }
