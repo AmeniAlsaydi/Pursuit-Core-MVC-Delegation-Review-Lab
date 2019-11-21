@@ -9,22 +9,54 @@
 import UIKit
 
 class SettingController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    @IBOutlet weak var sliderControl: UISlider!
+    @IBOutlet weak var stepperControl: UIStepper!
+    @IBOutlet weak var fontSize: UILabel!
+    
+    
+    var font: Float = 20 {
+        didSet {
+            fontSize.text = "Font Size: \(String(format: "%0.f", font))"
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureSlider()
+        configuresStepper()
+        fontSize.text = "Font Size: \(String(format: "%0.f", sliderControl.value))"
+        
     }
-    */
+    
+    func configureSlider() {
+           sliderControl.minimumValue = 5
+           sliderControl.maximumValue = 35
+           sliderControl.value = 20
+       }
+    
+    func configuresStepper() {
+        stepperControl.minimumValue = 5
+        stepperControl.maximumValue = 35
+        stepperControl.stepValue = 1
+        
+        //default start value
+        stepperControl.value = 20
+    }
+    
+    @IBAction func sliderChanged(_ sender: UISlider) {
+        font = sender.value
+        stepperControl.value = Double(font)
+        
+    }
+    
+    @IBAction func stepperChanged(_ sender: UIStepper) {
+        let fontAsInt = sender.value
+        font = Float(fontAsInt)
+        sliderControl.value = font
+        
+    }
+    
+    
 
 }
