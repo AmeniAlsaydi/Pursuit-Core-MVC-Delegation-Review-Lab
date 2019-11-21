@@ -111,6 +111,9 @@
                                 <rect key="frame" x="161" y="638" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Change Font "/>
+                                <connections>
+                                    <segue destination="jVV-Q2-SNh" kind="unwind" unwindAction="changeFontWithSegue:" id="cXC-Z2-ks4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -124,6 +127,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zd-tl-5EB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="jVV-Q2-SNh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1901.449275362319" y="119.86607142857142"/>
         </scene>

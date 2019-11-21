@@ -18,6 +18,16 @@ class ViewController: UIViewController {
         }
     }
     
+    var font: Float! {
+        didSet {
+            print(font)
+            // change the font of the cells
+            // cell.textLabel?.font
+            //cell.detailTextLabel?.text = movie.year.description
+            
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +38,15 @@ class ViewController: UIViewController {
 
     func loadData() {
         movies = Movie.allMovies
+    }
+    
+    @IBAction func changeFont(segue: UIStoryboardSegue) {
+        // get the font(float) from the other view controller
+        
+        guard let settingsVC = segue.source as? SettingController else {
+            fatalError("Failed to get access to SettingController")
+        }
+         font = settingsVC.font
     }
 
 }
