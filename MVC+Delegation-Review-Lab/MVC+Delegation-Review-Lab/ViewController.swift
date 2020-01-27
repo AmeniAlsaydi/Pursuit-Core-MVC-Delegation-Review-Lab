@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var font: CGFloat = 20.0 {
+    var font: CGFloat = 16.0 {
         didSet {
             tableView.reloadData() // THIS IS WHAT I WAS MISSING.. RELOAD DATA ONCE FONT HAS BEEN CHANGED!! 
         }
@@ -35,20 +35,30 @@ class ViewController: UIViewController {
         movies = Movie.allMovies
     }
     
-    // Unwind Segue:
+    // Unwind Segue: no longer needed, used custom delegate
     
-    @IBAction func changeFont(segue: UIStoryboardSegue) {
-        // get the font(float) from the other view controller
-        
-        guard let settingsVC = segue.source as? SettingController else {
+//    @IBAction func changeFont(segue: UIStoryboardSegue) {
+//        // get the font(float) from the other view controller
+//        
+//        guard let settingsVC = segue.source as? SettingController else {
+//            fatalError("Failed to get access to SettingController")
+//        }
+//        font = settingsVC.font
+//    }
+    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let settingsVC = segue.destination as? SettingController else {
             fatalError("Failed to get access to SettingController")
         }
-        font = CGFloat(settingsVC.font)
+        settingsVC.delegate = self
+        //settingsVC.font = font
     }
 
+    
 }
 
-//
+
 
 extension ViewController: UITableViewDataSource {
     
@@ -71,6 +81,14 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
     
+    
+}
+
+extension ViewController: SettingsVCDelegate {
+
+    func didChangeFont(font: CGFloat) {
+        self.font = font
+    }
     
 }
 

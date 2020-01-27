@@ -8,17 +8,24 @@
 
 import UIKit
 
+protocol SettingsVCDelegate: AnyObject {
+    func didChangeFont(font: CGFloat)
+}
+
 class SettingController: UIViewController {
     
     @IBOutlet weak var sliderControl: UISlider!
     @IBOutlet weak var stepperControl: UIStepper!
     @IBOutlet weak var fontSize: UILabel!
     
-    var font: Float = 20 { // how can i get it to remain the same font and not change back to 20
+    var font: CGFloat = 20.0 { // how can i get it to remain the same font and not change back to 20 // this needs to probably be an optional that is populated from the prepare for segue
+        
         didSet {
             fontSize.text = "Font Size: \(String(format: "%0.f", font))"
         }
     }
+    
+    weak var delegate: SettingsVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +40,7 @@ class SettingController: UIViewController {
            sliderControl.maximumValue = 35
         
         //default start value
-           sliderControl.value = font
+           sliderControl.value = Float(font)
        }
     
     func configuresStepper() {
@@ -46,15 +53,16 @@ class SettingController: UIViewController {
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
-        font = sender.value
+        font = CGFloat(sender.value)
         stepperControl.value = Double(font)
+        delegate?.didChangeFont(font: font)
         
     }
     
     @IBAction func stepperChanged(_ sender: UIStepper) {
-        let fontAsInt = sender.value
-        font = Float(fontAsInt)
-        sliderControl.value = font
-        
+        font = CGFloat(sender.value)
+        sliderControl.value = Float(font)
+        delegate?.didChangeFont(font: font)
     }
+    
 }

@@ -59,7 +59,7 @@
                     <navigationItem key="navigationItem" id="ogM-hh-OUU">
                         <barButtonItem key="rightBarButtonItem" title="Setting" id="fSM-b7-fsn">
                             <connections>
-                                <segue destination="AHJ-iF-xVg" kind="show" id="RH9-03-9Ja"/>
+                                <segue destination="AHJ-iF-xVg" kind="presentation" id="FHk-YJ-ka5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -76,47 +76,57 @@
             <objects>
                 <viewController id="AHJ-iF-xVg" customClass="SettingController" customModule="MVC_Delegation_Review_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gNX-eE-pra" customClass="Sett">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Table View Font " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFn-Ji-b0I">
-                                <rect key="frame" x="112" y="206" width="190" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Table View Font Size " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFn-Ji-b0I">
+                                <rect key="frame" x="94" y="208" width="226" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RYl-4w-NU3">
-                                <rect key="frame" x="59" y="352" width="297" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RYl-4w-NU3">
+                                <rect key="frame" x="55" y="329" width="304" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="7b0-yt-Yrh"/>
+                                </constraints>
                                 <connections>
                                     <action selector="sliderChanged:" destination="AHJ-iF-xVg" eventType="valueChanged" id="U7C-MB-AdV"/>
                                 </connections>
                             </slider>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="W7M-cX-0fe">
-                                <rect key="frame" x="160" y="432" width="94" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="W7M-cX-0fe">
+                                <rect key="frame" x="160" y="409" width="94" height="32"/>
                                 <connections>
                                     <action selector="stepperChanged:" destination="AHJ-iF-xVg" eventType="valueChanged" id="Ehq-8L-Svc"/>
                                 </connections>
                             </stepper>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fontsize: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vV5-EX-eTs">
-                                <rect key="frame" x="20" y="556" width="374" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fontsize: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vV5-EX-eTs">
+                                <rect key="frame" x="170.5" y="491" width="73.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjz-In-Lox">
-                                <rect key="frame" x="161" y="638" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Change Font "/>
-                                <connections>
-                                    <segue destination="jVV-Q2-SNh" kind="unwind" unwindAction="changeFontWithSegue:" id="cXC-Z2-ks4"/>
-                                </connections>
-                            </button>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xk4-Zn-m5j">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                                <items>
+                                    <navigationItem title="Settings" id="eCw-Bz-wPk"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xk4-Zn-m5j" firstAttribute="top" secondItem="gMv-Un-Wh9" secondAttribute="top" id="Agq-5G-Yxf"/>
+                            <constraint firstItem="xk4-Zn-m5j" firstAttribute="leading" secondItem="gMv-Un-Wh9" secondAttribute="leading" id="CIm-MQ-8C4"/>
+                            <constraint firstItem="vV5-EX-eTs" firstAttribute="centerX" secondItem="gNX-eE-pra" secondAttribute="centerX" id="T2H-7K-mIi"/>
+                            <constraint firstItem="W7M-cX-0fe" firstAttribute="centerX" secondItem="gNX-eE-pra" secondAttribute="centerX" id="bBN-9e-RtZ"/>
+                            <constraint firstItem="ZFn-Ji-b0I" firstAttribute="centerX" secondItem="gNX-eE-pra" secondAttribute="centerX" id="bSa-5g-UvP"/>
+                            <constraint firstItem="RYl-4w-NU3" firstAttribute="centerX" secondItem="gNX-eE-pra" secondAttribute="centerX" id="eav-Z8-B6K"/>
+                            <constraint firstItem="W7M-cX-0fe" firstAttribute="top" secondItem="RYl-4w-NU3" secondAttribute="bottom" constant="50" id="eg5-Cc-6ck"/>
+                            <constraint firstItem="RYl-4w-NU3" firstAttribute="top" secondItem="ZFn-Ji-b0I" secondAttribute="bottom" constant="100" id="glR-yS-q6b"/>
+                            <constraint firstItem="vV5-EX-eTs" firstAttribute="top" secondItem="W7M-cX-0fe" secondAttribute="bottom" constant="50" id="hWh-vF-tjT"/>
+                            <constraint firstItem="xk4-Zn-m5j" firstAttribute="trailing" secondItem="gMv-Un-Wh9" secondAttribute="trailing" id="hYC-Xg-M33"/>
+                            <constraint firstItem="ZFn-Ji-b0I" firstAttribute="top" secondItem="xk4-Zn-m5j" secondAttribute="bottom" constant="100" id="xVV-kf-eeX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gMv-Un-Wh9"/>
                     </view>
                     <navigationItem key="navigationItem" id="fMb-nO-ujf"/>
@@ -127,7 +137,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zd-tl-5EB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="jVV-Q2-SNh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1901.449275362319" y="119.86607142857142"/>
         </scene>
